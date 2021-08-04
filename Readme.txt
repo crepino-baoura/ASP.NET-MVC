@@ -1,7 +1,7 @@
 Les membres du groupes:
 
 - BATANDEO BAOURA
-- GODWIN kodjo m'bere
+- GODWIN kodjo 
 
 Etape nécessaire du démarrage du projet:
 
