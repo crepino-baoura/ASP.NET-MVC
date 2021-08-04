@@ -1,0 +1,8 @@
+C:\Users\CREPIN\Desktop\ASP.NET MVC\orgi\ASP.NET MVC\BIBLIO_Database\bin\Debug\BIBLIO_Database.dacpac
+C:\Users\CREPIN\Desktop\ASP.NET MVC\orgi\ASP.NET MVC\BIBLIO_Database\obj\Debug\BIBLIO_Database.sqlproj.AssemblyReference.cache
+C:\Users\CREPIN\Desktop\ASP.NET MVC\orgi\ASP.NET MVC\BIBLIO_Database\obj\Debug\Model.xml
+C:\Users\CREPIN\Desktop\ASP.NET MVC\orgi\ASP.NET MVC\BIBLIO_Database\obj\Debug\refactor.xml
+C:\Users\CREPIN\Desktop\ASP.NET MVC\orgi\ASP.NET MVC\BIBLIO_Database\obj\Debug\postdeploy.sql
+C:\Users\CREPIN\Desktop\ASP.NET MVC\orgi\ASP.NET MVC\BIBLIO_Database\obj\Debug\predeploy.sql
+C:\Users\CREPIN\Desktop\ASP.NET MVC\orgi\ASP.NET MVC\BIBLIO_Database\obj\Debug\BIBLIO_Database.dll
+C:\Users\CREPIN\Desktop\ASP.NET MVC\orgi\ASP.NET MVC\BIBLIO_Database\obj\Debug\BIBLIO_Database.pdb

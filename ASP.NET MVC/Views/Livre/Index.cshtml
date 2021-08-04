@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ASP.NET_MVC.Models.LIVRE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="livreTable" class="table">
+    <tr>
+        <th>
+            Titre
+        </th>
+        <th>
+           Image de Livre
+        </th>
+        <th>
+            AUTEUR
+        </th>
+        <th>
+            COURANT LITTERAIRE
+        </th>
+        <th>
+            EDITEUR
+        </th>
+        <th>
+            GENRE
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.libelle)
+            </td>
+            <td>
+                <a href="@item.image_livre/@item.url" target="_blank">Lire</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AUTEUR1.nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COURANTLITTERAIRE.libelle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EDITEUR.libelle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GENRE.libelle)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.livre_id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Details", "Details", new { id = item.livre_id }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.livre_id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<link href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet" />
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#livreTable').DataTable();
+        });
+    </script>
+}

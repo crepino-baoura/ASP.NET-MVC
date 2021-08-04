@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="80afdee9ac4544c0b4be0cfbdeb971e8" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_GESTION_BIBLIOModel.AUTEUR" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GESTION_BIBLIOModel.COURANTLITTERAIRE" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GESTION_BIBLIOModel.EDITEUR" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GESTION_BIBLIOModel.GENRE" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GESTION_BIBLIOModel.LIVRE" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="BD_GESTION_BIBLIOModel.FK__LIVRE__AUTEUR__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GESTION_BIBLIOModel.FK__COURANTLI__genre__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GESTION_BIBLIOModel.FK__LIVRE__commentli__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GESTION_BIBLIOModel.FK__LIVRE__editeur_i__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GESTION_BIBLIOModel.FK__LIVRE__genre_id__5CD6CB2B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

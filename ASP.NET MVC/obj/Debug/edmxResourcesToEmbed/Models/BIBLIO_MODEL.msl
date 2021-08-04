@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BD_GESTION_BIBLIOModelStoreContainer" CdmEntityContainer="BD_GESTION_BIBLIOEntities1">
+    <EntitySetMapping Name="AUTEUR">
+      <EntityTypeMapping TypeName="BD_GESTION_BIBLIOModel.AUTEUR">
+        <MappingFragment StoreEntitySet="AUTEUR">
+          <ScalarProperty Name="auteur_id" ColumnName="auteur_id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="pays" ColumnName="pays" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COURANTLITTERAIRE">
+      <EntityTypeMapping TypeName="BD_GESTION_BIBLIOModel.COURANTLITTERAIRE">
+        <MappingFragment StoreEntitySet="COURANTLITTERAIRE">
+          <ScalarProperty Name="commentlitteraire_id" ColumnName="commentlitteraire_id" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EDITEUR">
+      <EntityTypeMapping TypeName="BD_GESTION_BIBLIOModel.EDITEUR">
+        <MappingFragment StoreEntitySet="EDITEUR">
+          <ScalarProperty Name="editeur_id" ColumnName="editeur_id" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="pays" ColumnName="pays" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GENRE">
+      <EntityTypeMapping TypeName="BD_GESTION_BIBLIOModel.GENRE">
+        <MappingFragment StoreEntitySet="GENRE">
+          <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LIVRE">
+      <EntityTypeMapping TypeName="BD_GESTION_BIBLIOModel.LIVRE">
+        <MappingFragment StoreEntitySet="LIVRE">
+          <ScalarProperty Name="livre_id" ColumnName="livre_id" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="image_livre" ColumnName="image_livre" />
+          <ScalarProperty Name="date_edit" ColumnName="date_edit" />
+          <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+          <ScalarProperty Name="commentlitteraire_id" ColumnName="commentlitteraire_id" />
+          <ScalarProperty Name="AUTEUR" ColumnName="AUTEUR" />
+          <ScalarProperty Name="editeur_id" ColumnName="editeur_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

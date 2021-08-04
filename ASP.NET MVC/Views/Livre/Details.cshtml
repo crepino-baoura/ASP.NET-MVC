@@ -1,0 +1,82 @@
+﻿@model ASP.NET_MVC.Models.LIVRE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LIVRE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.libelle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image_livre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image_livre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_edit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_edit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AUTEUR1.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AUTEUR1.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COURANTLITTERAIRE.libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COURANTLITTERAIRE.libelle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EDITEUR.libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EDITEUR.libelle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GENRE.libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENRE.libelle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.livre_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

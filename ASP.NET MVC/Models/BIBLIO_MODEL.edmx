@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BD_GESTION_BIBLIOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AUTEUR">
+          <Key>
+            <PropertyRef Name="auteur_id" />
+          </Key>
+          <Property Name="auteur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="255" />
+          <Property Name="prenom" Type="varchar" MaxLength="255" />
+          <Property Name="tel" Type="varchar" MaxLength="255" />
+          <Property Name="pays" Type="varchar" MaxLength="255" />
+          <Property Name="adresse" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="COURANTLITTERAIRE">
+          <Key>
+            <PropertyRef Name="commentlitteraire_id" />
+          </Key>
+          <Property Name="commentlitteraire_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="varchar" MaxLength="255" />
+          <Property Name="genre_id" Type="int" />
+        </EntityType>
+        <EntityType Name="EDITEUR">
+          <Key>
+            <PropertyRef Name="editeur_id" />
+          </Key>
+          <Property Name="editeur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="varchar" MaxLength="255" />
+          <Property Name="adresse" Type="varchar" MaxLength="255" />
+          <Property Name="tel" Type="varchar" MaxLength="255" />
+          <Property Name="pays" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="GENRE">
+          <Key>
+            <PropertyRef Name="genre_id" />
+          </Key>
+          <Property Name="genre_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="LIVRE">
+          <Key>
+            <PropertyRef Name="livre_id" />
+          </Key>
+          <Property Name="livre_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="varchar" MaxLength="255" />
+          <Property Name="url" Type="varchar" MaxLength="255" />
+          <Property Name="image_livre" Type="varchar" MaxLength="255" />
+          <Property Name="date_edit" Type="datetime" />
+          <Property Name="genre_id" Type="int" />
+          <Property Name="commentlitteraire_id" Type="int" />
+          <Property Name="AUTEUR" Type="int" />
+          <Property Name="editeur_id" Type="int" />
+        </EntityType>
+        <Association Name="FK__COURANTLI__genre__45F365D3">
+          <End Role="GENRE" Type="Self.GENRE" Multiplicity="0..1" />
+          <End Role="COURANTLITTERAIRE" Type="Self.COURANTLITTERAIRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENRE">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="COURANTLITTERAIRE">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LIVRE__AUTEUR__5EBF139D">
+          <End Role="AUTEUR" Type="Self.AUTEUR" Multiplicity="0..1" />
+          <End Role="LIVRE" Type="Self.LIVRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTEUR">
+              <PropertyRef Name="auteur_id" />
+            </Principal>
+            <Dependent Role="LIVRE">
+              <PropertyRef Name="AUTEUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LIVRE__commentli__5DCAEF64">
+          <End Role="COURANTLITTERAIRE" Type="Self.COURANTLITTERAIRE" Multiplicity="0..1" />
+          <End Role="LIVRE" Type="Self.LIVRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURANTLITTERAIRE">
+              <PropertyRef Name="commentlitteraire_id" />
+            </Principal>
+            <Dependent Role="LIVRE">
+              <PropertyRef Name="commentlitteraire_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LIVRE__editeur_i__5FB337D6">
+          <End Role="EDITEUR" Type="Self.EDITEUR" Multiplicity="0..1" />
+          <End Role="LIVRE" Type="Self.LIVRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDITEUR">
+              <PropertyRef Name="editeur_id" />
+            </Principal>
+            <Dependent Role="LIVRE">
+              <PropertyRef Name="editeur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LIVRE__genre_id__5CD6CB2B">
+          <End Role="GENRE" Type="Self.GENRE" Multiplicity="0..1" />
+          <End Role="LIVRE" Type="Self.LIVRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENRE">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="LIVRE">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_GESTION_BIBLIOModelStoreContainer">
+          <EntitySet Name="AUTEUR" EntityType="Self.AUTEUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COURANTLITTERAIRE" EntityType="Self.COURANTLITTERAIRE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EDITEUR" EntityType="Self.EDITEUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GENRE" EntityType="Self.GENRE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LIVRE" EntityType="Self.LIVRE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__COURANTLI__genre__45F365D3" Association="Self.FK__COURANTLI__genre__45F365D3">
+            <End Role="GENRE" EntitySet="GENRE" />
+            <End Role="COURANTLITTERAIRE" EntitySet="COURANTLITTERAIRE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LIVRE__AUTEUR__5EBF139D" Association="Self.FK__LIVRE__AUTEUR__5EBF139D">
+            <End Role="AUTEUR" EntitySet="AUTEUR" />
+            <End Role="LIVRE" EntitySet="LIVRE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LIVRE__commentli__5DCAEF64" Association="Self.FK__LIVRE__commentli__5DCAEF64">
+            <End Role="COURANTLITTERAIRE" EntitySet="COURANTLITTERAIRE" />
+            <End Role="LIVRE" EntitySet="LIVRE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LIVRE__editeur_i__5FB337D6" Association="Self.FK__LIVRE__editeur_i__5FB337D6">
+            <End Role="EDITEUR" EntitySet="EDITEUR" />
+            <End Role="LIVRE" EntitySet="LIVRE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LIVRE__genre_id__5CD6CB2B" Association="Self.FK__LIVRE__genre_id__5CD6CB2B">
+            <End Role="GENRE" EntitySet="GENRE" />
+            <End Role="LIVRE" EntitySet="LIVRE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_GESTION_BIBLIOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AUTEUR">
+          <Key>
+            <PropertyRef Name="auteur_id" />
+          </Key>
+          <Property Name="auteur_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="prenom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pays" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="adresse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LIVRE" Relationship="Self.FK__LIVRE__AUTEUR__5EBF139D" FromRole="AUTEUR" ToRole="LIVRE" />
+        </EntityType>
+        <EntityType Name="COURANTLITTERAIRE">
+          <Key>
+            <PropertyRef Name="commentlitteraire_id" />
+          </Key>
+          <Property Name="commentlitteraire_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="genre_id" Type="Int32" />
+          <NavigationProperty Name="GENRE" Relationship="Self.FK__COURANTLI__genre__45F365D3" FromRole="COURANTLITTERAIRE" ToRole="GENRE" />
+          <NavigationProperty Name="LIVRE" Relationship="Self.FK__LIVRE__commentli__5DCAEF64" FromRole="COURANTLITTERAIRE" ToRole="LIVRE" />
+        </EntityType>
+        <EntityType Name="EDITEUR">
+          <Key>
+            <PropertyRef Name="editeur_id" />
+          </Key>
+          <Property Name="editeur_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="adresse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pays" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LIVRE" Relationship="Self.FK__LIVRE__editeur_i__5FB337D6" FromRole="EDITEUR" ToRole="LIVRE" />
+        </EntityType>
+        <EntityType Name="GENRE">
+          <Key>
+            <PropertyRef Name="genre_id" />
+          </Key>
+          <Property Name="genre_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="COURANTLITTERAIRE" Relationship="Self.FK__COURANTLI__genre__45F365D3" FromRole="GENRE" ToRole="COURANTLITTERAIRE" />
+          <NavigationProperty Name="LIVRE" Relationship="Self.FK__LIVRE__genre_id__5CD6CB2B" FromRole="GENRE" ToRole="LIVRE" />
+        </EntityType>
+        <EntityType Name="LIVRE">
+          <Key>
+            <PropertyRef Name="livre_id" />
+          </Key>
+          <Property Name="livre_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="image_livre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="date_edit" Type="DateTime" Precision="3" />
+          <Property Name="genre_id" Type="Int32" />
+          <Property Name="commentlitteraire_id" Type="Int32" />
+          <Property Name="AUTEUR" Type="Int32" />
+          <Property Name="editeur_id" Type="Int32" />
+          <NavigationProperty Name="AUTEUR1" Relationship="Self.FK__LIVRE__AUTEUR__5EBF139D" FromRole="LIVRE" ToRole="AUTEUR" />
+          <NavigationProperty Name="COURANTLITTERAIRE" Relationship="Self.FK__LIVRE__commentli__5DCAEF64" FromRole="LIVRE" ToRole="COURANTLITTERAIRE" />
+          <NavigationProperty Name="EDITEUR" Relationship="Self.FK__LIVRE__editeur_i__5FB337D6" FromRole="LIVRE" ToRole="EDITEUR" />
+          <NavigationProperty Name="GENRE" Relationship="Self.FK__LIVRE__genre_id__5CD6CB2B" FromRole="LIVRE" ToRole="GENRE" />
+        </EntityType>
+        <Association Name="FK__LIVRE__AUTEUR__5EBF139D">
+          <End Role="AUTEUR" Type="Self.AUTEUR" Multiplicity="0..1" />
+          <End Role="LIVRE" Type="Self.LIVRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTEUR">
+              <PropertyRef Name="auteur_id" />
+            </Principal>
+            <Dependent Role="LIVRE">
+              <PropertyRef Name="AUTEUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COURANTLI__genre__45F365D3">
+          <End Role="GENRE" Type="Self.GENRE" Multiplicity="0..1" />
+          <End Role="COURANTLITTERAIRE" Type="Self.COURANTLITTERAIRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENRE">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="COURANTLITTERAIRE">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LIVRE__commentli__5DCAEF64">
+          <End Role="COURANTLITTERAIRE" Type="Self.COURANTLITTERAIRE" Multiplicity="0..1" />
+          <End Role="LIVRE" Type="Self.LIVRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURANTLITTERAIRE">
+              <PropertyRef Name="commentlitteraire_id" />
+            </Principal>
+            <Dependent Role="LIVRE">
+              <PropertyRef Name="commentlitteraire_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LIVRE__editeur_i__5FB337D6">
+          <End Role="EDITEUR" Type="Self.EDITEUR" Multiplicity="0..1" />
+          <End Role="LIVRE" Type="Self.LIVRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDITEUR">
+              <PropertyRef Name="editeur_id" />
+            </Principal>
+            <Dependent Role="LIVRE">
+              <PropertyRef Name="editeur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LIVRE__genre_id__5CD6CB2B">
+          <End Role="GENRE" Type="Self.GENRE" Multiplicity="0..1" />
+          <End Role="LIVRE" Type="Self.LIVRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENRE">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="LIVRE">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_GESTION_BIBLIOEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AUTEUR" EntityType="Self.AUTEUR" />
+          <EntitySet Name="COURANTLITTERAIRE" EntityType="Self.COURANTLITTERAIRE" />
+          <EntitySet Name="EDITEUR" EntityType="Self.EDITEUR" />
+          <EntitySet Name="GENRE" EntityType="Self.GENRE" />
+          <EntitySet Name="LIVRE" EntityType="Self.LIVRE" />
+          <AssociationSet Name="FK__LIVRE__AUTEUR__5EBF139D" Association="Self.FK__LIVRE__AUTEUR__5EBF139D">
+            <End Role="AUTEUR" EntitySet="AUTEUR" />
+            <End Role="LIVRE" EntitySet="LIVRE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COURANTLI__genre__45F365D3" Association="Self.FK__COURANTLI__genre__45F365D3">
+            <End Role="GENRE" EntitySet="GENRE" />
+            <End Role="COURANTLITTERAIRE" EntitySet="COURANTLITTERAIRE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LIVRE__commentli__5DCAEF64" Association="Self.FK__LIVRE__commentli__5DCAEF64">
+            <End Role="COURANTLITTERAIRE" EntitySet="COURANTLITTERAIRE" />
+            <End Role="LIVRE" EntitySet="LIVRE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LIVRE__editeur_i__5FB337D6" Association="Self.FK__LIVRE__editeur_i__5FB337D6">
+            <End Role="EDITEUR" EntitySet="EDITEUR" />
+            <End Role="LIVRE" EntitySet="LIVRE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LIVRE__genre_id__5CD6CB2B" Association="Self.FK__LIVRE__genre_id__5CD6CB2B">
+            <End Role="GENRE" EntitySet="GENRE" />
+            <End Role="LIVRE" EntitySet="LIVRE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_GESTION_BIBLIOModelStoreContainer" CdmEntityContainer="BD_GESTION_BIBLIOEntities1">
+          <EntitySetMapping Name="AUTEUR">
+            <EntityTypeMapping TypeName="BD_GESTION_BIBLIOModel.AUTEUR">
+              <MappingFragment StoreEntitySet="AUTEUR">
+                <ScalarProperty Name="auteur_id" ColumnName="auteur_id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="pays" ColumnName="pays" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COURANTLITTERAIRE">
+            <EntityTypeMapping TypeName="BD_GESTION_BIBLIOModel.COURANTLITTERAIRE">
+              <MappingFragment StoreEntitySet="COURANTLITTERAIRE">
+                <ScalarProperty Name="commentlitteraire_id" ColumnName="commentlitteraire_id" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EDITEUR">
+            <EntityTypeMapping TypeName="BD_GESTION_BIBLIOModel.EDITEUR">
+              <MappingFragment StoreEntitySet="EDITEUR">
+                <ScalarProperty Name="editeur_id" ColumnName="editeur_id" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="pays" ColumnName="pays" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GENRE">
+            <EntityTypeMapping TypeName="BD_GESTION_BIBLIOModel.GENRE">
+              <MappingFragment StoreEntitySet="GENRE">
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LIVRE">
+            <EntityTypeMapping TypeName="BD_GESTION_BIBLIOModel.LIVRE">
+              <MappingFragment StoreEntitySet="LIVRE">
+                <ScalarProperty Name="livre_id" ColumnName="livre_id" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="image_livre" ColumnName="image_livre" />
+                <ScalarProperty Name="date_edit" ColumnName="date_edit" />
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="commentlitteraire_id" ColumnName="commentlitteraire_id" />
+                <ScalarProperty Name="AUTEUR" ColumnName="AUTEUR" />
+                <ScalarProperty Name="editeur_id" ColumnName="editeur_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
